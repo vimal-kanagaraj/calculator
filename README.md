@@ -1,6 +1,6 @@
 #  Calculator
 
-##Features
+## Features
 - User will be to enter the numbers and operators in the command line.
 - Operations only addition, subtraction, multiplication and division are supported.
 - Sample Inputs <br />
@@ -19,7 +19,7 @@
  `mvn package`
 
 - Run the following command to run the application <br />
- `java -cp target/calculator-1.0-snapshort.jar com.kvsamples.calculator.cli.CalculatorMain`
+  `java -cp target/calculator-1.0-SNAPSHOT.jar com.kvsamples.calculator.cli.CalculatorMain`
 
 ## Assumptions
 - Only integers can be entered as input. Output can be in decimal format.
