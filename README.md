@@ -1,12 +1,12 @@
 #  Calculator
 
-## Features
+##Features
 - User will be to enter the numbers and operators in the command line.
 - Operations only addition, subtraction, multiplication and division are supported.
-- Sample Inputs
-  `5+2`
-  `5+2*(3/2)`
-   `5+(2/3)*(3*(2/3))`
+- Sample Inputs <br />
+  `5+2` <br />
+  `5+2*(3/2)` <br />
+   `5+(2/3)*(3*(2/3))` <br />
 - Output will be displayed to the user in the same command line interface where user entered the input.
 - Input validation is done when user enters anything that is not appropriate for the calculator.
 
@@ -15,9 +15,10 @@
 - JDK 1.8+
 
 ## Steps to run the program
-- Run the following command to build the application
+- Run the following command to build the application<br />
  `mvn package`
-- Run the following command to run the application
+
+- Run the following command to run the application <br />
  `java -cp target/calculator-1.0-snapshort.jar com.kvsamples.calculator.cli.CalculatorMain`
 
 ## Assumptions
