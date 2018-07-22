@@ -1,6 +1,6 @@
 #  Calculator
 
-##Features
+## Features
 - User will be to enter the numbers and operators in the command line.
 - Operations only addition, subtraction, multiplication and division are supported.
 - Sample Inputs
