@@ -8,8 +8,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.kvsamples.calculator.constants.Messages;
 import com.kvsamples.calculator.expression.Calculator;
-import com.kvsamples.calculator.messages.Messages;
 
 public class CalculatorTest {
 	Calculator calculator;
@@ -102,17 +102,17 @@ public class CalculatorTest {
 
 	@Test
 	public void testExpressionWithRepeatedOperators() {
-		assertTrue(calculator.evaluateExpression("10++2").startsWith("Inappropriate character"));
+		assertEquals(Messages.NOT_A_VALID_EXPRESSION,calculator.evaluateExpression("10++2"));
 	}
 
 	@Test
 	public void testExpressionEmptyBrackets() {
-		assertTrue(calculator.evaluateExpression("10+2+()").startsWith("Unable to perform"));
+		assertEquals(Messages.NOT_A_VALID_EXPRESSION,calculator.evaluateExpression("10+2+()"));
 	}
 
 	@Test
 	public void testExpressionRepeatedOperatorsWithBracketCombination() {
-		assertTrue(calculator.evaluateExpression("10+2+(+2)").startsWith("Unable to perform"));
+		assertEquals(Messages.NOT_A_VALID_EXPRESSION,calculator.evaluateExpression("10+2+(+2)"));
 	}
 
 	@Test

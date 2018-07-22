@@ -3,6 +3,8 @@ package com.kvsamples.calculator.expression;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.kvsamples.calculator.constants.CalculatorConstants;
+
 /**
  * Class the validates the expressions
  * 
@@ -11,7 +13,7 @@ import java.util.regex.Pattern;
  */
 public class Validator {
 	// Expression pattern
-	private static Pattern expressionPattern = Pattern.compile("^[\\d\\(]+[\\d\\+\\-\\* \\/\\(\\)]+[\\d\\)]+$");
+	private static Pattern expressionPattern = Pattern.compile(CalculatorConstants.EXPRESSION_PATTERN);
 
 	/**
 	 * This method is used to validate the expression in the appropriate format

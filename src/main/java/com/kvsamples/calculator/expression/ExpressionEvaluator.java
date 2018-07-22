@@ -3,6 +3,7 @@ package com.kvsamples.calculator.expression;
 import java.util.List;
 import java.util.Stack;
 
+import com.kvsamples.calculator.constants.CalculatorConstants;
 import com.kvsamples.calculator.exception.ExpressionEvalatorException;
 
 /**
@@ -59,8 +60,12 @@ public class ExpressionEvaluator {
 	 * @return true if passed param is number
 	 */
 	private boolean isNumeric(String str) {
-		return str.matches("-?\\d+(\\.\\d+)?"); // match a number with optional
-												// '-' and decimal.
+		boolean isNumber = false;
+		if (str != null) {
+			// match a number with optional '-' and decimal.
+			isNumber = str.matches(CalculatorConstants.NUMBER_PATTERN);
+		}
+		return isNumber;
 	}
 
 }

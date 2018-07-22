@@ -26,7 +26,7 @@ public class Operations {
 	}
 
 	/**
-	 * Perfoms the operations based on the passed operator on the given operands
+	 * Performs the operations based on the passed operator 
 	 * 
 	 * @param operator
 	 *            operator to be applied

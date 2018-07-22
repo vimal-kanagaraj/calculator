@@ -31,13 +31,4 @@
 - Both input and output will be less than Double data type's max value i.e. 1.7*10^308
 
 ## Sequence Diagram
-```seq
-CalculatorMain->Calculator: evaluateExpression
-Calculator-> PostFixConverter:convertFromInfix
-Note right of Calculator: Converts the expression \n in to Post Fix
-PostFixConverter->>Calculator:
-Calculator->ExpressionEvaluator:evaluatePostfix
-Note right of Calculator: Evalutes the Post Fix \n expression
-ExpressionEvaluator->>Calculator:
-Calculator->>CalculatorMain:
-```
+ ![](https://github.com/vimal-kanagaraj/calculator/raw/master/screenshots/sequence-diagram.jpg) 
