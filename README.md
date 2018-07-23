@@ -34,6 +34,8 @@
 - Both input and output will be less than Double data type's max value i.e. 1.7*10^308
 
 ## Sequence Diagram
+ Following diagram illustrates the main flow of the calculator application
+ 
  ![](https://github.com/vimal-kanagaraj/calculator/raw/master/screenshots/sequence-diagram.jpg)  
  <br />
 ## Unit Tests
