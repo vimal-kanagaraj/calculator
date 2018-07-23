@@ -37,7 +37,7 @@
 	2. 	Substraction =>  -
 	3. 	Multiplication =>  *
 	4. 	Division =>  /
-	5. Brackets => ( )
+	5.  Brackets => ( )
 -  Following will be the order of precedence of the operators
 
 
@@ -50,7 +50,14 @@ Operator  | Description
 -  Precedence for Operators with equal precedence will be evaluated based on order in which it is appearing in the expression from left to right
   
 
-## Sequence Diagram
+## Design approach
+ - Expressions to be validated before evaluation.
+ - Expression will be given in Infix notation format which is easier to be read by humans. It is difficult to be parsed by machine. 
+ - To resolve the above mentioned issue with Infix notation format, expression has to be converted into post fix notation format where it can be parsed by machines.
+ - Expression can be converted into post fix notation format using stacks to place the operators based on the precedence.
+ - Expression in post fix format can then be evaluated by using stacks to place the values for applying the sequence of arithmetic operations.
+ 
+ 
  Following diagram illustrates the main flow of the calculator application
  
  ![](https://github.com/vimal-kanagaraj/calculator/raw/master/screenshots/sequence-diagram.jpg)  
