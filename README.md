@@ -16,12 +16,28 @@
 
 ## Steps to run the program
 - Run the following command to build the application<br />
- `mvn package`
-
+ `mvn clean package` <br />
+![](https://github.com/vimal-kanagaraj/calculator/raw/master/screenshots/mvn-package.jpg)
+<br />
 - Run the following command to run the application <br />
-  `java -cp target/calculator-1.0-SNAPSHOT.jar com.kvsamples.calculator.cli.CalculatorMain`
+ `mvn exec:java --quiet` <br />
 
+ ![](https://github.com/vimal-kanagaraj/calculator/raw/master/screenshots/mvn-run.jpg) 
+ <br />
+ 
 ## Assumptions
 - Only integers can be entered as input. Output can be in decimal format.
 - Negative numbers will not be passed as input. 
 - Both input and output will be less than Double data type's max value i.e. 1.7*10^308
+
+## Sequence Diagram
+```seq
+CalculatorMain->Calculator: evaluateExpression
+Calculator-> PostFixConverter:convertFromInfix
+Note right of Calculator: Converts the expression \n in to Post Fix
+PostFixConverter->>Calculator:
+Calculator->ExpressionEvaluator:evaluatePostfix
+Note right of Calculator: Evalutes the Post Fix \n expression
+ExpressionEvaluator->>Calculator:
+Calculator->>CalculatorMain:
+```
