@@ -10,7 +10,7 @@
 - Output will be displayed to the user in the same command line interface where user entered the input.
 - Input validation is done when user enters anything that is not appropriate for the calculator.
 
- To view requirements click [here](https://github.com/vimal-kanagaraj/calculator/blob/master/Requirements.md Click to view requirements")
+ To view requirements click [here](https://github.com/vimal-kanagaraj/calculator/blob/master/Requirements.md "Click to view requirements")
 
 ## Prerequisites to run the program
 - Maven 
