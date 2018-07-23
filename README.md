@@ -21,6 +21,7 @@
  `mvn clean package` <br />
 ![](https://github.com/vimal-kanagaraj/calculator/raw/master/screenshots/mvn-package.jpg)
 <br />
+
 - Run the following command to run the application <br />
  `mvn exec:java --quiet` <br />
 
