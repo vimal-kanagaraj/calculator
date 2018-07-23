@@ -33,11 +33,13 @@
 - Negative numbers will not be passed as input. 
 - Both input and output will be less than Double data type's max value i.e. 1.7*10^308
 - Following are the allowed operators for the calculator
- 1. Addition  +
- 1. Substraction - +
- 1. Multiplication - +
- 1. Division - +
--  Following will be the order of precedence
+	1. 	Addition  =>  +
+	2. 	Substraction =>  -
+	3. 	Multiplication =>  *
+	4. 	Division =>  /
+	5. Brackets => ( )
+-  Following will be the order of precedence of the operators
+
 
 Operator  | Description
 ------------- | -------------
