@@ -10,6 +10,8 @@
 - Output will be displayed to the user in the same command line interface where user entered the input.
 - Input validation is done when user enters anything that is not appropriate for the calculator.
 
+ To view requirements click [here](https://github.com/vimal-kanagaraj/calculator/blob/master/Requirements.md Click to view requirements")
+
 ## Prerequisites to run the program
 - Maven 
 - JDK 1.8+
@@ -31,4 +33,7 @@
 - Both input and output will be less than Double data type's max value i.e. 1.7*10^308
 
 ## Sequence Diagram
- ![](https://github.com/vimal-kanagaraj/calculator/raw/master/screenshots/sequence-diagram.jpg) 
+ ![](https://github.com/vimal-kanagaraj/calculator/raw/master/screenshots/sequence-diagram.jpg)  
+ <br />
+## Unit Tests
+Click [here](https://github.com/vimal-kanagaraj/calculator/blob/master/UnitTestResults.md "Click to view unit tests results and code coverage") to view unit tests results and code coverage
