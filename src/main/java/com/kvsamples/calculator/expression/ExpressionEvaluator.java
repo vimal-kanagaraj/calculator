@@ -26,26 +26,29 @@ public class ExpressionEvaluator {
 		// create a stack that holds values
 
 		Stack<Double> valueStack = new Stack<Double>();
+		if (postFixNotation == null || postFixNotation.isEmpty()) {
+			valueStack.push(0.0);
+		} else {
+			for (String data : postFixNotation) {
+				// If it is number push to value stack
+				if (isNumeric(data)) {
+					valueStack.push(Double.parseDouble(data));
+				}
+				// If it is not number and value stack has more than a value
+				// Take the last two values and perform the operations
+				else if (valueStack.size() > 1) {
+					if (Operations.operations.containsKey(data)) {
+						// Latest becomes second operand
+						double secondOperand = valueStack.pop();
+						double firstOperand = valueStack.pop();
+						valueStack.push(Operations.performOperation(data, firstOperand, secondOperand));
+					} else {
+						throw new ExpressionEvalatorException(valueStack, data);
+					}
 
-		for (String data : postFixNotation) {
-			// If it is number push to value stack
-			if (isNumeric(data)) {
-				valueStack.push(Double.parseDouble(data));
-			}
-			// If it is not number and value stack has more than a value
-			// Take the last two values and perform the operations
-			else if (valueStack.size() > 1) {
-				if (Operations.operations.containsKey(data)) {
-					double secondOperand = valueStack.pop();// Latest becomes
-															// second operand
-					double firstOperand = valueStack.pop();
-					valueStack.push(Operations.performOperation(data, firstOperand, secondOperand));
 				} else {
 					throw new ExpressionEvalatorException(valueStack, data);
 				}
-
-			} else {
-				throw new ExpressionEvalatorException(valueStack, data);
 			}
 		}
 		return valueStack.pop();

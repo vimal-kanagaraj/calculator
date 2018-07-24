@@ -30,49 +30,50 @@ public class PostFixConverter {
 		// Initializing the stack used to store the operators in sequence based
 		// on precedence
 		Stack<Character> operatorStack = new Stack<Character>();
+		if (expression != null) {
+			for (int i = 0; i < expression.length(); i++) {
+				char currentChar = expression.charAt(i);
 
-		for (int i = 0; i < expression.length(); i++) {
-			char currentChar = expression.charAt(i);
+				// If the character, read remaining digits as whole number & add
+				// it
+				// to output
+				if (Character.isDigit(currentChar)) {
+					isPrevCharAnOpertor = false;
+					String numberStr = getNumber(expression, i);
+					i = i + numberStr.length() - 1;
+					expressionInPostFixFormat.add(numberStr);
+				}
+				// Ignore white spaces
+				else if (Character.isWhitespace(currentChar)) {
+					continue;
+				}
 
-			// If the character, read remaining digits as whole number & add it
-			// to output
-			if (Character.isDigit(currentChar)) {
-				isPrevCharAnOpertor = false;
-				String numberStr = getNumber(expression, i);
-				i = i + numberStr.length() - 1;
-				expressionInPostFixFormat.add(numberStr);
-			}
-			// Ignore white spaces
-			else if (Character.isWhitespace(currentChar)) {
-				continue;
-			}
+				// Push '(' to stack
+				else if (currentChar == LEFT_BRACKET) {
+					isPrevCharAnOpertor = false;
+					operatorStack.push(currentChar);
+				}
 
-			// Push '(' to stack
-			else if (currentChar == LEFT_BRACKET) {
-				isPrevCharAnOpertor = false;
-				operatorStack.push(currentChar);
-			}
-
-			else if (currentChar == RIGHT_BRACKET) {
-				isPrevCharAnOpertor = false;
-				popOperatorsWithBrackets(expressionInPostFixFormat, operatorStack, i);
-			} else if (Operators.isAValidOperator(currentChar)) {
-				// Throws exception if operators are appearing consecutively
-				if (isPrevCharAnOpertor) {
+				else if (currentChar == RIGHT_BRACKET) {
+					isPrevCharAnOpertor = false;
+					popOperatorsWithBrackets(expressionInPostFixFormat, operatorStack, i);
+				} else if (Operators.isAValidOperator(currentChar)) {
+					// Throws exception if operators are appearing consecutively
+					if (isPrevCharAnOpertor) {
+						throw new ExpressionParserException(currentChar, i);
+					}
+					popOperatorFromStack(expressionInPostFixFormat, operatorStack, currentChar);
+					isPrevCharAnOpertor = true;
+				} else {
+					// Throws expression if the operator is invalid/ non numeric
 					throw new ExpressionParserException(currentChar, i);
 				}
-				popOperatorFromStack(expressionInPostFixFormat, operatorStack, currentChar);
-				isPrevCharAnOpertor = true;
-			} else {
-				// Throws expression if the operator is invalid/ non numeric
-				throw new ExpressionParserException(currentChar, i);
+			}
+			// Pops all elements from stack and push it to output list
+			while (!operatorStack.isEmpty()) {
+				expressionInPostFixFormat.add("" + operatorStack.pop());
 			}
 		}
-		// Pops all elements from stack and push it to output list
-		while (!operatorStack.isEmpty()) {
-			expressionInPostFixFormat.add("" + operatorStack.pop());
-		}
-
 		return expressionInPostFixFormat;
 	}
 
