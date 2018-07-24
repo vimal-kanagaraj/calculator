@@ -8,7 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.kvsamples.calculator.constants.Messages;
+import com.kvsamples.calculator.constants.MessageConstants;
 import com.kvsamples.calculator.expression.Calculator;
 
 public class CalculatorTest {
@@ -65,58 +65,58 @@ public class CalculatorTest {
 
 	@Test
 	public void testBoundaryConditionForInput() {
-		assertEquals(Messages.INFINITE_VALUE, calculator
+		assertEquals(MessageConstants.INFINITE_VALUE, calculator
 				.evaluateExpression(BigDecimal.valueOf(Double.MAX_VALUE).stripTrailingZeros().toPlainString() + "0+1"));
 	}
 
 	@Test
 	public void testBoundaryConditionForOutput() {
-		assertEquals(Messages.INFINITE_VALUE, calculator.evaluateExpression(
+		assertEquals(MessageConstants.INFINITE_VALUE, calculator.evaluateExpression(
 				BigDecimal.valueOf(Double.MAX_VALUE).stripTrailingZeros().toPlainString() + "*100"));
 	}
 
 	@Test
 	public void testExpressionWithAlphabets() {
-		assertEquals(Messages.NOT_A_VALID_EXPRESSION, calculator.evaluateExpression("10+a"));
+		assertEquals(MessageConstants.NOT_A_VALID_EXPRESSION, calculator.evaluateExpression("10+a"));
 	}
 
 	@Test
 	public void testExpressionWithDecimal() {
-		assertEquals(Messages.NOT_A_VALID_EXPRESSION, calculator.evaluateExpression("10+2.1"));
+		assertEquals(MessageConstants.NOT_A_VALID_EXPRESSION, calculator.evaluateExpression("10+2.1"));
 	}
 
 	@Test
 	public void testExpressionWithStartingWithInvalidOperators() {
-		assertEquals(Messages.NOT_A_VALID_EXPRESSION, calculator.evaluateExpression("10^2"));
+		assertEquals(MessageConstants.NOT_A_VALID_EXPRESSION, calculator.evaluateExpression("10^2"));
 	}
 
 	@Test
 	public void testExpressionStartingWithOperator() {
-		assertEquals(Messages.NOT_A_VALID_EXPRESSION, calculator.evaluateExpression("+10+2"));
+		assertEquals(MessageConstants.NOT_A_VALID_EXPRESSION, calculator.evaluateExpression("+10+2"));
 	}
 
 	@Test
 	public void testExpressionEndingWithOperator() {
-		assertEquals(Messages.NOT_A_VALID_EXPRESSION, calculator.evaluateExpression("10+2+"));
+		assertEquals(MessageConstants.NOT_A_VALID_EXPRESSION, calculator.evaluateExpression("10+2+"));
 	}
 
 	@Test
 	public void testExpressionWithRepeatedOperators() {
-		assertEquals(Messages.NOT_A_VALID_EXPRESSION,calculator.evaluateExpression("10++2"));
+		assertEquals(MessageConstants.NOT_A_VALID_EXPRESSION, calculator.evaluateExpression("10++2"));
 	}
 
 	@Test
 	public void testExpressionEmptyBrackets() {
-		assertEquals(Messages.NOT_A_VALID_EXPRESSION,calculator.evaluateExpression("10+2+()"));
+		assertEquals(MessageConstants.NOT_A_VALID_EXPRESSION, calculator.evaluateExpression("10+2+()"));
 	}
 
 	@Test
 	public void testExpressionRepeatedOperatorsWithBracketCombination() {
-		assertEquals(Messages.NOT_A_VALID_EXPRESSION,calculator.evaluateExpression("10+2+(+2)"));
+		assertEquals(MessageConstants.NOT_A_VALID_EXPRESSION, calculator.evaluateExpression("10+2+(+2)"));
 	}
 
 	@Test
 	public void testDivisionByZero() {
-		assertEquals(Messages.INFINITE_VALUE, calculator.evaluateExpression("10/0"));
+		assertEquals(MessageConstants.INFINITE_VALUE, calculator.evaluateExpression("10/0"));
 	}
 }

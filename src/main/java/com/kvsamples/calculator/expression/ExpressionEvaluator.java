@@ -24,11 +24,10 @@ public class ExpressionEvaluator {
 	 */
 	public double evaluatePostfix(List<String> postFixNotation) {
 		// create a stack that holds values
+
 		Stack<Double> valueStack = new Stack<Double>();
 
-		for (int i = 0; i < postFixNotation.size(); i++) {
-			String data = postFixNotation.get(i);
-
+		for (String data : postFixNotation) {
 			// If it is number push to value stack
 			if (isNumeric(data)) {
 				valueStack.push(Double.parseDouble(data));

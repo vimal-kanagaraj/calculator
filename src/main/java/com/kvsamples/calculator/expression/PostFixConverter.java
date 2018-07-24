@@ -13,6 +13,9 @@ import com.kvsamples.calculator.exception.ExpressionParserException;
  *
  */
 public class PostFixConverter {
+	private static final char RIGHT_BRACKET = ')';
+	private static final char LEFT_BRACKET = '(';
+
 	/**
 	 * This method is used to convert from infix expression into post fix format
 	 * 
@@ -28,7 +31,7 @@ public class PostFixConverter {
 		// on precedence
 		Stack<Character> operatorStack = new Stack<Character>();
 
-		for (int i = 0; i < expression.length(); ++i) {
+		for (int i = 0; i < expression.length(); i++) {
 			char currentChar = expression.charAt(i);
 
 			// If the character, read remaining digits as whole number & add it
@@ -45,47 +48,80 @@ public class PostFixConverter {
 			}
 
 			// Push '(' to stack
-			else if (currentChar == '(') {
+			else if (currentChar == LEFT_BRACKET) {
 				isPrevCharAnOpertor = false;
 				operatorStack.push(currentChar);
 			}
 
-			else if (currentChar == ')') {
+			else if (currentChar == RIGHT_BRACKET) {
 				isPrevCharAnOpertor = false;
-				// Pop from the stack and add it output till the next occurrence
-				// of the '('
-				while (!operatorStack.isEmpty() && operatorStack.peek() != '(') {
-					expressionInPostFixFormat.add("" + operatorStack.pop());
-				}
-				// Need to check
-				if (!operatorStack.isEmpty() && operatorStack.peek() != '(') {
-					throw new ExpressionParserException(currentChar, i);
-				} else {
-					operatorStack.pop();
-				}
+				popOperatorsWithBrackets(expressionInPostFixFormat, operatorStack, i);
 			} else if (Operators.isAValidOperator(currentChar)) {
-
+				// Throws exception if operators are appearing consecutively
 				if (isPrevCharAnOpertor) {
 					throw new ExpressionParserException(currentChar, i);
 				}
-				// Adding the operator based on precedence
-				while (!operatorStack.isEmpty()
-						&& Operators.getPrecedence(currentChar) <= Operators.getPrecedence(operatorStack.peek())) {
-					expressionInPostFixFormat.add("" + operatorStack.pop());
-				}
-				operatorStack.push(currentChar);
+				popOperatorFromStack(expressionInPostFixFormat, operatorStack, currentChar);
 				isPrevCharAnOpertor = true;
 			} else {
+				// Throws expression if the operator is invalid/ non numeric
 				throw new ExpressionParserException(currentChar, i);
 			}
 		}
-
 		// Pops all elements from stack and push it to output list
 		while (!operatorStack.isEmpty()) {
 			expressionInPostFixFormat.add("" + operatorStack.pop());
 		}
 
 		return expressionInPostFixFormat;
+	}
+
+	/**
+	 * Pops all operators from stack with brackets
+	 * 
+	 * @param expressionInPostFixFormat
+	 *            Expression in post fix format
+	 * @param operatorStack
+	 *            Operator stack
+	 * @param operatorPosition
+	 *            Operator position with in expression
+	 *
+	 */
+	private void popOperatorsWithBrackets(List<String> expressionInPostFixFormat, Stack<Character> operatorStack,
+			int operatorPosition) {
+		// Pop from the stack and add it output till the next occurrence
+		// of the '('
+		while (!operatorStack.isEmpty() && operatorStack.peek() != LEFT_BRACKET) {
+			expressionInPostFixFormat.add("" + operatorStack.pop());
+		}
+		// if the left bracket appears immediately after right bracket ,
+		// exception will be thrown
+		if (!operatorStack.isEmpty() && operatorStack.peek() != LEFT_BRACKET) {
+			throw new ExpressionParserException(RIGHT_BRACKET, operatorPosition);
+		} else {
+			operatorStack.pop();
+		}
+	}
+
+	/**
+	 * Push the operator to the stack based on precedence
+	 * 
+	 * @param expressionInPostFixFormat
+	 *            Expression in post fix format
+	 * @param operatorStack
+	 *            Operator stack
+	 * @param operator
+	 *            Operator for which precedence to be
+	 */
+	private void popOperatorFromStack(List<String> expressionInPostFixFormat, Stack<Character> operatorStack,
+			char operator) {
+
+		// Adding the operator based on precedence
+		while (!operatorStack.isEmpty()
+				&& Operators.getPrecedence(operator) <= Operators.getPrecedence(operatorStack.peek())) {
+			expressionInPostFixFormat.add("" + operatorStack.pop());
+		}
+		operatorStack.push(operator);
 	}
 
 	/**
