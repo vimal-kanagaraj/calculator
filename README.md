@@ -19,6 +19,7 @@
 ## Steps to run the program
 - Run the following command to build the application<br />
  `mvn clean package` <br />
+ 
 ![](https://github.com/vimal-kanagaraj/calculator/raw/master/screenshots/mvn-package.jpg)
 <br />
 
