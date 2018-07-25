@@ -1,7 +1,7 @@
 #  Calculator
 
 ## Features
-- User can enter the numbers and operators in the command line.
+- User needs to enter the numbers and operators in the command line.
 - Supported Operations : Addition, Subtraction, Multiplication and Division.
 - Sample Inputs <br />
   `5+2` <br />
