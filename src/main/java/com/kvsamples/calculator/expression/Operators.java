@@ -23,7 +23,7 @@ public class Operators {
 	 * @param operator
 	 * @return
 	 */
-	public static boolean isAValidOperator(Character operator) {
+	public static boolean isAValidOperator(final Character operator) {
 		return operatorPrecedenceMap.keySet().stream().anyMatch(operator::equals);
 	}
 
@@ -34,12 +34,8 @@ public class Operators {
 	 *            operator for which precedence to be found
 	 * @return precedence value
 	 */
-	public static int getPrecedence(char operator) {
-		int precedence = -1;
-		if (operatorPrecedenceMap.containsKey(operator)) {
-			precedence = operatorPrecedenceMap.get(operator);
-		}
-		return precedence;
+	public static int getPrecedence(final char operator) {
+		return operatorPrecedenceMap.containsKey(operator) ? operatorPrecedenceMap.get(operator) : -1;
 	}
 
 }

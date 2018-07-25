@@ -11,6 +11,5 @@ public final class CalculatorConstants {
 		// do not instantiate this class
 	}
 
-	public static final String EXPRESSION_PATTERN = "^[\\d\\(]+[\\d\\+\\-\\* \\/\\(\\)]+[\\d\\)]+$";
 	public static final String NUMBER_PATTERN = "-?\\d+(\\.\\d+)?";
 }

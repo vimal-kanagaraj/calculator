@@ -11,6 +11,12 @@ import org.junit.Test;
 import com.kvsamples.calculator.exception.ExpressionParserException;
 import com.kvsamples.calculator.expression.PostFixConverter;
 
+/**
+ * Test class to test conversion from InFix notation to post fix notation
+ * 
+ * @author Vimalraj Kanagaraj
+ *
+ */
 public class PostFixConverterTest {
 	PostFixConverter converter;
 

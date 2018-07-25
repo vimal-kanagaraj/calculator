@@ -22,7 +22,7 @@ public class ExpressionEvaluator {
 	 *            Expression in post fix format
 	 * @return evaluated result
 	 */
-	public double evaluatePostfix(List<String> postFixNotation) {
+	public double evaluatePostfix(final List<String> postFixNotation) {
 		// create a stack that holds values
 
 		Stack<Double> valueStack = new Stack<Double>();
@@ -61,13 +61,8 @@ public class ExpressionEvaluator {
 	 *            string to be checked
 	 * @return true if passed param is number
 	 */
-	private boolean isNumeric(String str) {
-		boolean isNumber = false;
-		if (str != null) {
-			// match a number with optional '-' and decimal.
-			isNumber = str.matches(CalculatorConstants.NUMBER_PATTERN);
-		}
-		return isNumber;
+	private boolean isNumeric(final String str) {
+		return str != null && str.matches(CalculatorConstants.NUMBER_PATTERN);
 	}
 
 }

@@ -23,8 +23,8 @@ public class CalculatorMain {
 	 */
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please enter expression to be evalauted then press RETURN key!");
-		System.out.println("To quit and type 'Exit' then press RETURN key!");
+		System.out.println("Please enter the expression to be evalauted then press RETURN key!");
+		System.out.println("To quit, type 'Exit' then press RETURN key!");
 
 		Calculator calculator = new Calculator();
 		while (scanner.hasNext()) {

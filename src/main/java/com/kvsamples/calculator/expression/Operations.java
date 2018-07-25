@@ -36,7 +36,8 @@ public class Operations {
 	 *            Second Operand
 	 * @return Evaluated value
 	 */
-	public static double performOperation(String operator, double firstOperand, double secondOperand) {
+	public static double performOperation(final String operator, final double firstOperand,
+			final double secondOperand) {
 		return operations.get(operator).applyAsDouble(firstOperand, secondOperand);
 	}
 }

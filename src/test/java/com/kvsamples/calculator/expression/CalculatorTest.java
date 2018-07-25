@@ -11,6 +11,13 @@ import org.junit.Test;
 import com.kvsamples.calculator.constants.MessageConstants;
 import com.kvsamples.calculator.expression.Calculator;
 
+/**
+ * Test class to calculator operations. This also takes care of testing
+ * integration with other components
+ * 
+ * @author Vimalraj Kanagaraj
+ *
+ */
 public class CalculatorTest {
 	Calculator calculator;
 
@@ -21,6 +28,7 @@ public class CalculatorTest {
 
 	@After
 	public void tearDown() throws Exception {
+		calculator = null;
 	}
 
 	@Test

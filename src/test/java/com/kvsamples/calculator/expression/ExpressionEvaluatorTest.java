@@ -11,6 +11,12 @@ import org.junit.Test;
 import com.kvsamples.calculator.exception.ExpressionEvalatorException;
 import com.kvsamples.calculator.expression.ExpressionEvaluator;
 
+/**
+ * Test class to test the expression evaluation
+ * 
+ * @author Vimalraj Kanagaraj
+ *
+ */
 public class ExpressionEvaluatorTest {
 	ExpressionEvaluator evaluator;
 
@@ -21,6 +27,7 @@ public class ExpressionEvaluatorTest {
 
 	@After
 	public void tearDown() throws Exception {
+		evaluator = null;
 	}
 
 	@Test

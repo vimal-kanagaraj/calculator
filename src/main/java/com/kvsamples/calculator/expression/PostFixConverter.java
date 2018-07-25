@@ -23,24 +23,22 @@ public class PostFixConverter {
 	 *            Expression to be converted
 	 * @return List of values in the post fix notation order
 	 */
-	public List<String> convertFromInfix(String expression) {
+	public List<String> convertFromInfix(final String expression) {
 		// Initializing the list used to store the expression in the post fix
 		List<String> expressionInPostFixFormat = new ArrayList<String>();
-		boolean isPrevCharAnOpertor = false;
 		// Initializing the stack used to store the operators in sequence based
 		// on precedence
 		Stack<Character> operatorStack = new Stack<Character>();
 		if (expression != null) {
-			for (int i = 0; i < expression.length(); i++) {
-				char currentChar = expression.charAt(i);
+			for (int position = 0; position < expression.length(); position++) {
+				char currentChar = expression.charAt(position);
 
 				// If the character, read remaining digits as whole number & add
 				// it
 				// to output
 				if (Character.isDigit(currentChar)) {
-					isPrevCharAnOpertor = false;
-					String numberStr = getNumber(expression, i);
-					i = i + numberStr.length() - 1;
+					String numberStr = getNumber(expression, position);
+					position = position + numberStr.length() - 1;
 					expressionInPostFixFormat.add(numberStr);
 				}
 				// Ignore white spaces
@@ -50,23 +48,16 @@ public class PostFixConverter {
 
 				// Push '(' to stack
 				else if (currentChar == LEFT_BRACKET) {
-					isPrevCharAnOpertor = false;
 					operatorStack.push(currentChar);
 				}
 
 				else if (currentChar == RIGHT_BRACKET) {
-					isPrevCharAnOpertor = false;
-					popOperatorsWithBrackets(expressionInPostFixFormat, operatorStack, i);
+					popOperatorsWithInBrackets(expressionInPostFixFormat, operatorStack);
 				} else if (Operators.isAValidOperator(currentChar)) {
-					// Throws exception if operators are appearing consecutively
-					if (isPrevCharAnOpertor) {
-						throw new ExpressionParserException(currentChar, i);
-					}
 					popOperatorFromStack(expressionInPostFixFormat, operatorStack, currentChar);
-					isPrevCharAnOpertor = true;
 				} else {
 					// Throws expression if the operator is invalid/ non numeric
-					throw new ExpressionParserException(currentChar, i);
+					throw new ExpressionParserException(currentChar, position);
 				}
 			}
 			// Pops all elements from stack and push it to output list
@@ -88,20 +79,14 @@ public class PostFixConverter {
 	 *            Operator position with in expression
 	 *
 	 */
-	private void popOperatorsWithBrackets(List<String> expressionInPostFixFormat, Stack<Character> operatorStack,
-			int operatorPosition) {
+	private void popOperatorsWithInBrackets(List<String> expressionInPostFixFormat, Stack<Character> operatorStack) {
 		// Pop from the stack and add it output till the next occurrence
 		// of the '('
 		while (!operatorStack.isEmpty() && operatorStack.peek() != LEFT_BRACKET) {
 			expressionInPostFixFormat.add("" + operatorStack.pop());
 		}
-		// if the left bracket appears immediately after right bracket ,
-		// exception will be thrown
-		if (!operatorStack.isEmpty() && operatorStack.peek() != LEFT_BRACKET) {
-			throw new ExpressionParserException(RIGHT_BRACKET, operatorPosition);
-		} else {
-			operatorStack.pop();
-		}
+		// Popping left bracket which is no more required
+		operatorStack.pop();
 	}
 
 	/**
@@ -117,7 +102,8 @@ public class PostFixConverter {
 	private void popOperatorFromStack(List<String> expressionInPostFixFormat, Stack<Character> operatorStack,
 			char operator) {
 
-		// Adding the operator based on precedence
+		// Adding the operators which have higher precedence than current
+		// operator
 		while (!operatorStack.isEmpty()
 				&& Operators.getPrecedence(operator) <= Operators.getPrecedence(operatorStack.peek())) {
 			expressionInPostFixFormat.add("" + operatorStack.pop());
