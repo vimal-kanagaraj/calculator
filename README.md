@@ -1,8 +1,8 @@
 #  Calculator
 
 ## Features
-- User will be to enter the numbers and operators in the command line.
-- Operations only addition, subtraction, multiplication and division are supported.
+- User can enter the numbers and operators in the command line.
+- Supported Operations : Addition, Subtraction, Multiplication and Division.
 - Sample Inputs <br />
   `5+2` <br />
   `5+2*(3/2)` <br />
@@ -33,11 +33,11 @@
 - Negative numbers will not be passed as input. 
 - Both input and output will be less than Double data type's max value i.e. 1.7*10^308
 - Following are the allowed operators for the calculator
-	1. 	Addition  =>  +
-	2. 	Substraction =>  -
-	3. 	Multiplication =>  *
-	4. 	Division =>  /
-	5.  Brackets => ( )
+	1. 	Addition  :  +
+	2. 	Substraction :  -
+	3. 	Multiplication :  *
+	4. 	Division :  /
+	
 -  Following will be the order of precedence of the operators
 
 
@@ -47,14 +47,14 @@ Operator  | Description
 *,/  | Multiplication , Division
 +,- | Addition , Substraction
 
--  Precedence for Operators with equal precedence will be evaluated based on order in which it is appearing in the expression from left to right
-  
+-  Precedence for Operators with equal precedence will be evaluated based on the order in which they appear in the expression from left to right
+
 
 ## Design approach
  - Expressions to be validated before evaluation.
- - Expression will be given in Infix notation format which is easier to be read by humans. It is difficult to be parsed by machine. 
- - To resolve the above mentioned issue with Infix notation format, expression has to be converted into post fix notation format where it can be parsed by machines.
- - Expression can be converted into post fix notation format using stacks to place the operators based on the precedence.
+ - Expression will be given in Infix notation format which is easier to be read by humans. But it is difficult to be parsed by machine. 
+ - To resolve the above mentioned issue with Infix notation format, expression has to be converted into post fix notation format where it can be parsed easily by machines.
+ - Expression can be converted into post fix notation format using Stacks data structure to place the operators based on their precedence.
  - Expression in post fix format can then be evaluated by using stacks to place the values for applying the sequence of arithmetic operations.
  
  
