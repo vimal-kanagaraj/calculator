@@ -36,7 +36,7 @@ public class Calculator {
 	public String evaluateExpression(final String expression) {
 		String result;
 		try {
-			Validator.validateExpression1(expression);
+			Validator.validateExpression(expression);
 
 			// convert the expression into list of operands/operators post
 			// fix notation order

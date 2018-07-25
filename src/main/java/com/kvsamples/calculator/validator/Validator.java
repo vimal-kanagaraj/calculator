@@ -18,7 +18,7 @@ public class Validator {
 	 * @param expression
 	 *            Expression to be validated
 	 */
-	public static void validateExpression1(final String expression) {
+	public static void validateExpression(final String expression) {
 
 		if (expression == null || expression.trim().equals("")) {
 			throw new ValidatorException("Expression is null or empty", expression);
