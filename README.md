@@ -30,8 +30,7 @@
  <br />
  
 ## Assumptions
-- Only integers can be entered as input. Output can be in decimal format.
-- Negative numbers will not be passed as input. 
+- Only positive integers can be entered as input. Output can be in decimal format.
 - Both input and output will be less than Double data type's max value i.e. 1.7*10^308
 - Following are the allowed operators for the calculator
 	1. 	Addition  :  +
