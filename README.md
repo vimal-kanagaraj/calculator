@@ -39,18 +39,15 @@
 	4. 	Division :  /
 	
 -  Following will be the order of precedence of the operators based on BODMAS rule
-
                     
-                    
-Operator  | Description
-------------- | -------------
- () | Brackets
-/  | Division 
-*  | Multiplication
-+  | Addition 
--  | Substraction
 
-
+| Operator  | Description |
+| ------------- | ------------- |
+| ()  | Brackets  |
+| /  | Division  |
+| *  | Multiplication  |
+| +  | Addition  |
+| -  | Substraction  |
 
 
 ## Design approach
