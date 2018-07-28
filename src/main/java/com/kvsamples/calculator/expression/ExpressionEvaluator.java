@@ -1,7 +1,8 @@
 package com.kvsamples.calculator.expression;
 
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 import com.kvsamples.calculator.constants.CalculatorConstants;
 import com.kvsamples.calculator.exception.ExpressionEvalatorException;
@@ -24,8 +25,7 @@ public class ExpressionEvaluator {
 	 */
 	public double evaluatePostfix(final List<String> postFixNotation) {
 		// create a stack that holds values
-
-		Stack<Double> valueStack = new Stack<Double>();
+		Deque<Double> valueStack = new LinkedList<>();
 		if (postFixNotation == null || postFixNotation.isEmpty()) {
 			valueStack.push(0.0);
 		} else {
@@ -37,7 +37,7 @@ public class ExpressionEvaluator {
 				// If it is not number and value stack has more than a value
 				// Take the last two values and perform the operations
 				else if (valueStack.size() > 1) {
-					if (Operations.operations.containsKey(data)) {
+					if (Operations.allowedOperatios.containsKey(data)) {
 						// Latest becomes second operand
 						double secondOperand = valueStack.pop();
 						double firstOperand = valueStack.pop();

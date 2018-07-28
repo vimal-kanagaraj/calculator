@@ -1,6 +1,6 @@
 package com.kvsamples.calculator.exception;
 
-import java.util.Stack;
+import java.util.Deque;
 
 /**
  * Exception which will be thrown while evaluating the expression
@@ -19,7 +19,7 @@ public class ExpressionEvalatorException extends ExpressionException {
 	 * @param operator
 	 *            operator to be applied on the values
 	 */
-	public ExpressionEvalatorException(Stack<Double> stack, String operator) {
+	public ExpressionEvalatorException(Deque<Double> stack, String operator) {
 		super(buildMessage(stack, operator));
 	}
 
@@ -32,7 +32,7 @@ public class ExpressionEvalatorException extends ExpressionException {
 	 *            operator to be applied on the values
 	 * @return exception message
 	 */
-	private static String buildMessage(Stack<Double> stack, String operator) {
+	private static String buildMessage(Deque<Double> stack, String operator) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Unable to perform operation for operator'");
 		builder.append(operator);
@@ -40,6 +40,7 @@ public class ExpressionEvalatorException extends ExpressionException {
 		while (!stack.isEmpty()) {
 			builder.append(stack.pop());
 		}
+
 		builder.append("'");
 		return builder.toString();
 	}

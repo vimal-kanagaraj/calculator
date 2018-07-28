@@ -11,6 +11,9 @@ import com.kvsamples.calculator.exception.ValidatorException;
  *
  */
 public class Validator {
+	private Validator() {
+		// do not instantiate this class
+	}
 
 	/**
 	 * This method is used to validate the expression in the appropriate format
@@ -23,7 +26,6 @@ public class Validator {
 		if (expression == null || expression.trim().equals("")) {
 			throw new ValidatorException("Expression is null or empty", expression);
 		}
-		//  Check for ( & ) is equal.
 		if (expression.chars().filter(ch -> ch == '(').count() != expression.chars().filter(ch -> ch == ')').count()) {
 			throw new ValidatorException(
 					"Count of left brackets & Count of right brackets do not match in the expression", expression);

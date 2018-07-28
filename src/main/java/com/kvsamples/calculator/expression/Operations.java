@@ -15,14 +15,18 @@ public class Operations {
 	private static final String MULTIPLICATION = "*";
 	private static final String SUBSTRACTION = "-";
 	private static final String ADDTION = "+";
-	public static Map<String, DoubleBinaryOperator> operations = new HashMap<String, DoubleBinaryOperator>();
+	protected static Map<String, DoubleBinaryOperator> allowedOperatios = new HashMap<>();
 	// Build the operations map with lambda expressions for performing
 	// arithmetic operations.
 	static {
-		operations.put(ADDTION, Double::sum);
-		operations.put(SUBSTRACTION, (firstOperand, secondOperand) -> firstOperand - secondOperand);
-		operations.put(MULTIPLICATION, (firstOperand, secondOperand) -> firstOperand * secondOperand);
-		operations.put(DIVISON, (firstOperand, secondOperand) -> firstOperand / secondOperand);
+		allowedOperatios.put(ADDTION, Double::sum);
+		allowedOperatios.put(SUBSTRACTION, (firstOperand, secondOperand) -> firstOperand - secondOperand);
+		allowedOperatios.put(MULTIPLICATION, (firstOperand, secondOperand) -> firstOperand * secondOperand);
+		allowedOperatios.put(DIVISON, (firstOperand, secondOperand) -> firstOperand / secondOperand);
+	}
+
+	private Operations() {
+		// do not instantiate this class
 	}
 
 	/**
@@ -38,6 +42,6 @@ public class Operations {
 	 */
 	public static double performOperation(final String operator, final double firstOperand,
 			final double secondOperand) {
-		return operations.get(operator).applyAsDouble(firstOperand, secondOperand);
+		return allowedOperatios.get(operator).applyAsDouble(firstOperand, secondOperand);
 	}
 }

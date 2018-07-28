@@ -1,8 +1,9 @@
 package com.kvsamples.calculator.expression;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 import com.kvsamples.calculator.exception.ExpressionParserException;
 
@@ -25,40 +26,36 @@ public class PostFixConverter {
 	 */
 	public List<String> convertFromInfix(final String expression) {
 		// Initializing the list used to store the expression in the post fix
-		List<String> expressionInPostFixFormat = new ArrayList<String>();
+		List<String> expressionInPostFixFormat = new ArrayList<>();
 		// Initializing the stack used to store the operators in sequence based
 		// on precedence
-		Stack<Character> operatorStack = new Stack<Character>();
+		Deque<Character> operatorStack = new LinkedList<>();
 		if (expression != null) {
-			for (int position = 0; position < expression.length(); position++) {
-				char currentChar = expression.charAt(position);
-
+			int position = 0;
+			while (position < expression.length()) {
+				char token = expression.charAt(position);
 				// If the character, read remaining digits as whole number & add
 				// it
 				// to output
-				if (Character.isDigit(currentChar)) {
+				if (Character.isDigit(token)) {
 					String numberStr = getNumber(expression, position);
 					position = position + numberStr.length() - 1;
 					expressionInPostFixFormat.add(numberStr);
 				}
-				// Ignore white spaces
-				else if (Character.isWhitespace(currentChar)) {
-					continue;
-				}
-
 				// Push '(' to stack
-				else if (currentChar == LEFT_BRACKET) {
-					operatorStack.push(currentChar);
+				else if (token == LEFT_BRACKET) {
+					operatorStack.push(token);
 				}
 
-				else if (currentChar == RIGHT_BRACKET) {
+				else if (token == RIGHT_BRACKET) {
 					popOperatorsWithInBrackets(expressionInPostFixFormat, operatorStack);
-				} else if (Operators.isAValidOperator(currentChar)) {
-					popOperatorFromStack(expressionInPostFixFormat, operatorStack, currentChar);
-				} else {
+				} else if (Operators.isAValidOperator(token)) {
+					popOperatorFromStack(expressionInPostFixFormat, operatorStack, token);
+				} else if (!Character.isWhitespace(token)) {
 					// Throws expression if the operator is invalid/ non numeric
-					throw new ExpressionParserException(currentChar, position);
+					throw new ExpressionParserException(token, position);
 				}
+				position++;
 			}
 			// Pops all elements from stack and push it to output list
 			while (!operatorStack.isEmpty()) {
@@ -79,7 +76,7 @@ public class PostFixConverter {
 	 *            Operator position with in expression
 	 *
 	 */
-	private void popOperatorsWithInBrackets(List<String> expressionInPostFixFormat, Stack<Character> operatorStack) {
+	private void popOperatorsWithInBrackets(List<String> expressionInPostFixFormat, Deque<Character> operatorStack) {
 		// Pop from the stack and add it output till the next occurrence
 		// of the '('
 		while (!operatorStack.isEmpty() && operatorStack.peek() != LEFT_BRACKET) {
@@ -99,7 +96,7 @@ public class PostFixConverter {
 	 * @param operator
 	 *            Operator for which precedence to be
 	 */
-	private void popOperatorFromStack(List<String> expressionInPostFixFormat, Stack<Character> operatorStack,
+	private void popOperatorFromStack(List<String> expressionInPostFixFormat, Deque<Character> operatorStack,
 			char operator) {
 
 		// Adding the operators which have higher precedence than current

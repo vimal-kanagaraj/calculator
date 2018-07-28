@@ -8,13 +8,17 @@ public class Operators {
 	private static final char MULTIPLICATION = '*';
 	private static final char SUBSTRACTION = '-';
 	private static final char ADDITION = '+';
-	private static Map<Character, Integer> operatorPrecedenceMap = new HashMap<Character, Integer>();
+	private static Map<Character, Integer> operatorPrecedenceMap = new HashMap<>();
 	// Builds the map that has operator precedence mapping
 	static {
 		operatorPrecedenceMap.put(ADDITION, 1);
 		operatorPrecedenceMap.put(SUBSTRACTION, 1);
 		operatorPrecedenceMap.put(MULTIPLICATION, 2);
 		operatorPrecedenceMap.put(DIVISION, 2);
+	}
+
+	private Operators() {
+		// do not instantiate this class
 	}
 
 	/**

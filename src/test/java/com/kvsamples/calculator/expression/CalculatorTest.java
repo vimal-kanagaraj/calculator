@@ -76,10 +76,16 @@ public class CalculatorTest {
 		assertEquals("6", calculator.evaluateExpression("(10+4)/(2+5)*3"));
 	}
 
+	
 	@Test
 	public void testExpressionWithDecimalOutput() {
 		assertEquals("4.666666666666667", calculator.evaluateExpression("(10+4)/(2+7)*3"));
 	}
+	@Test
+	public void testExpressionWithLengthyExpression() {
+		assertEquals("-126403.66052049617", calculator.evaluateExpression("1052+1743-5605*4695/551+5830-4634*5045/4020+5021-7943*2580/330+1346-6831*1419/2874+4984-7092*9652/5629+5902-4387*9388/6009+6899-7053*3694/5399+9571-7805*9811/1667+4182-3867*1259/3218+6901-6406*9550/9147+8604-7582*6431/7063+8226-622*1465/595+8795"));
+	}
+	
 
 	@Test
 	public void testBoundaryConditionForInput() {
