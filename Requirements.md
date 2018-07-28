@@ -16,8 +16,5 @@ Write a calculator which takes inputs from the user and outputs the equivalent v
 - Submit the solution via your personal GIT repo link.
 - Project structure must be either Maven or Gradle Java Project.
 - Design should have best principles of OOP.
-- You are required to use Java Lambdas.
 - At least 5 positive and 5 negative test cases should be provided. 
-- Junit preferable, but Any test framework is fine. 
-- You are required to use logger framework.
 
