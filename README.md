@@ -16,14 +16,14 @@
 - Maven 
 - JDK 1.8+
 
-## Steps to run the program
-- Run the following command to build the application<br />
+## Steps to build and run the program
+- To build the application, run the following command <br />
  `mvn clean package` <br />
  
 ![](https://github.com/vimal-kanagaraj/calculator/raw/master/screenshots/mvn-package.jpg)
 <br />
 
-- Run the following command to run the application <br />
+- To run the calculator, execute the below command<br />
  `mvn exec:java --quiet` <br />
 
  ![](https://github.com/vimal-kanagaraj/calculator/raw/master/screenshots/mvn-run.jpg) 
@@ -38,16 +38,19 @@
 	3. 	Multiplication :  *
 	4. 	Division :  /
 	
--  Following will be the order of precedence of the operators
+-  Following will be the order of precedence of the operators based on BODMAS rule
 
-
+                    
+                    
 Operator  | Description
 ------------- | -------------
-()  |Brackets
-*,/  | Multiplication , Division
-+,- | Addition , Substraction
+ () | Brackets
+/  | Division 
+*  | Multiplication
++  | Addition 
+-  | Substraction
 
--  Precedence for Operators with equal precedence will be evaluated based on the order in which they appear in the expression from left to right
+
 
 
 ## Design approach
