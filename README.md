@@ -64,3 +64,6 @@
  <br />
 ## Unit Tests
 Click [here](https://github.com/vimal-kanagaraj/calculator/blob/master/UnitTestResults.md "Click to view unit tests results and code coverage") to view unit tests results and code coverage
+
+## Sonar Code Quality Report
+Click [here](https://github.com/vimal-kanagaraj/calculator/blob/master/SonarReport.md "Click to view Sonar Code Quality Report") to view sonar code quality report
